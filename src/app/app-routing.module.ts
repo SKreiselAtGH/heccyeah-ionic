@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {LogInComponent} from './log-in/log-in.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  }
+  {path: '', redirectTo: '/log-in', pathMatch: 'full'},
+  {path: 'log-in', component: LogInComponent},
+
 ];
 @NgModule({
   imports: [
