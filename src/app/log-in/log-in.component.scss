@@ -1,3 +1,21 @@
-.half-width {
-  width: 50%;
+.log-card {
+  min-height: 60%;
+  width: 70%;
+}
+.quart-width {
+  width: 25%;
+}
+.checkbox {
+  margin-top: 1%;
+}
+.content-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.button-flex {
+  float: bottom;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
