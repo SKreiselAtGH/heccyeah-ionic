@@ -5,20 +5,22 @@
 
   <ion-card-content>
     <div class="content-flex">
-      <div>
-        <ion-item>
+      <div class="form-flex">
+        <ion-item class="field-flex">
           <ion-label position="floating">Username:</ion-label>
           <ion-input [(ngModel)]="username"></ion-input>
         </ion-item>
-        <ion-item *ngIf="!pswChecked">
+        <ion-item *ngIf="!pswChecked" class="field-flex">
           <ion-label position="floating">Password:</ion-label>
           <ion-input type="password" [(ngModel)]="password"></ion-input>
         </ion-item>
-        <ion-item *ngIf="pswChecked">
+        <ion-item *ngIf="pswChecked" class="field-flex">
           <ion-label position="floating">Password:</ion-label>
           <ion-input [(ngModel)]="password"></ion-input>
         </ion-item>
-        <ion-checkbox class="checkbox" [(ngModel)]="pswChecked"></ion-checkbox> Show Password
+        <div class="field-flex">
+          <ion-checkbox class="checkbox" [(ngModel)]="pswChecked" ></ion-checkbox>&nbsp;Show Password
+        </div>
       </div>
 
 
@@ -38,43 +40,47 @@
 
   <ion-card-content>
     <div class="content-flex">
-      <div>
-        <ion-item>
+      <div class="form-flex">
+        <ion-item class="field-flex">
           <ion-label position="floating">First Name:</ion-label>
           <ion-input [(ngModel)]="firstName"></ion-input>
-        </ion-item> <ion-item>
-        <ion-label position="floating">Last Name:</ion-label>
-        <ion-input [(ngModel)]="lastName"></ion-input>
-      </ion-item>
+        </ion-item>
+        <ion-item class="field-flex">
+           <ion-label position="floating">Last Name:</ion-label>
+          <ion-input [(ngModel)]="lastName"></ion-input>
+        </ion-item>
 
-        <ion-item>
+        <ion-item class="field-flex">
           <ion-label position="floating">Email:</ion-label>
           <ion-input [(ngModel)]="email"></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item class="field-flex">
           <ion-label position="floating">Username:</ion-label>
           <ion-input [(ngModel)]="username"></ion-input>
         </ion-item>
 
-        <ion-item *ngIf="!pswChecked">
+        <ion-item *ngIf="!pswChecked" class="field-flex">
           <ion-label position="floating">Password:</ion-label>
           <ion-input type="password" [(ngModel)]="newPassword"></ion-input>
         </ion-item>
-        <ion-item *ngIf="pswChecked">
+        <ion-item *ngIf="pswChecked" class="field-flex">
           <ion-label position="floating">Password:</ion-label>
           <ion-input [(ngModel)]="newPassword"></ion-input>
         </ion-item>
-          <ion-checkbox class="checkbox" [(ngModel)]="pswChecked"></ion-checkbox> Show Password
-        <ion-item *ngIf="!confChecked">
+        <div class="field-flex">
+          <ion-checkbox class="checkbox" [(ngModel)]="pswChecked" ></ion-checkbox>&nbsp;Show Password
+        </div>
+        <ion-item *ngIf="!confChecked" class="field-flex">
           <ion-label position="floating">Confirm Password:</ion-label>
           <ion-input type="password" [(ngModel)]="confirmPassword"></ion-input>
         </ion-item>
-        <ion-item *ngIf="confChecked">
+        <ion-item *ngIf="confChecked" class="field-flex">
           <ion-label position="floating">Confirm Password:</ion-label>
           <ion-input [(ngModel)]="confirmPassword"></ion-input>
         </ion-item>
-        <ion-checkbox class="checkbox" [(ngModel)]="confChecked"></ion-checkbox> Show Password
-
+        <div class="field-flex">
+          <ion-checkbox class="checkbox" [(ngModel)]="confChecked" ></ion-checkbox>&nbsp;Show Password
+        </div>
       </div>
 
 

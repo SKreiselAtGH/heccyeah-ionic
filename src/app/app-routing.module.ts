@@ -5,10 +5,10 @@ import {MainFeedComponent} from './main-feed/main-feed.component';
 import {ProfileComponent} from './profile/profile.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/log-in', pathMatch: 'full'},
-  {path: 'log-in', component: LogInComponent},
-  {path: 'main-feed', component: MainFeedComponent},
-  {path: 'profile', component: ProfileComponent}
+    {path: '', redirectTo: '/log-in', pathMatch: 'full'},
+    {path: 'log-in', component: LogInComponent},
+    {path: 'profile', component: ProfileComponent},
+    {path: 'main-feed', component: MainFeedComponent},
 
 ];
 @NgModule({

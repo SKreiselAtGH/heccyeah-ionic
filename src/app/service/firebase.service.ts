@@ -19,18 +19,11 @@ export class FirebaseService implements OnInit {
   loggedIn = false;
   userRefID: any;
   name = '';
-  user = {
-    firstName: '',
-    lastName: '',
-    fullName: '',
-    UID: '',
-    userHandle: '',
-    userEmail: ''
-  };
+  user: any;
   private auth: any;
   private newUser: any;
   private currentUser: firebase.User;
-  public signedIn: firebase.User;
+  signedIn: any;
   constructor(public db: AngularFirestore,
               public http: HttpClient,
               private router: Router) { }
@@ -55,11 +48,11 @@ export class FirebaseService implements OnInit {
     return this.http.get<any>('https://api.timezonedb.com/v2.1/get-time-zone?key=QSU8HCQU9BBY&format=json&by=zone&zone=CDT');
   }
 
-  createMessage(value) {
-    return this.db.collection('messages').add({
-      msg: value
-    });
-  }
+  // createMessage(value) {
+  //   return this.db.collection('messages').add({
+  //     msg: value
+  //   });
+  // }
 
   deleteMessages() {
     console.log(this.ids);
@@ -71,7 +64,6 @@ export class FirebaseService implements OnInit {
 
   //   Create a new user
   createUser(email, password, firstName, lastName, handle) {
-    debugger;
     let newUser: { email: any; password: string; fullName: string; handle: any };
     newUser = {
       handle,
@@ -83,7 +75,6 @@ export class FirebaseService implements OnInit {
 
     firebase.auth().createUserWithEmailAndPassword(email, password).then(r => {
       console.log(r.user.uid);
-    debugger;
       this.loggedIn = true;
       this.writeUserData( fullName, email, handle, firstName, lastName, r.user.uid );
 
@@ -133,38 +124,29 @@ export class FirebaseService implements OnInit {
       obs = from(firebase.auth().signInWithEmailAndPassword(email, password)
           .then((credentials) => {
             console.log(credentials);
-            const user = firebase.auth().currentUser;
-            if (user) {
-              this.loggedIn = true;
-              console.log('we gucci');
-            } else {
-              this.loggedIn = false;
-              console.log('we not gucci');
-            }
           }).catch((error) => {
             console.log('error loggin in');
           }));
+      this.signedIn = firebase.auth().currentUser;
+      if (this.signedIn) {
+        this.loggedIn = true;
+        console.log('we gucci');
+      } else {
+        this.loggedIn = false;
+        console.log('we not gucci');
+      }
     }
     console.log(obs);
     return obs;
   }
 
-  getUser(): any {
+  getUser() {
     const db = firebase.firestore();
-    debugger;
-    this.currentUser = firebase.auth().currentUser;
-    const userRef = db.collection('app').doc('users').collection('user_info').doc(this.currentUser.email);
+    // this.signedIn = firebase.auth().currentUser;
+    const userRef = db.collection('app').doc('users').collection('user_info').doc(this.signedIn.email);
     console.log(userRef);
-    userRef.get().then(doc => {
+    this.user = userRef.get().then(doc => {
       if (doc.exists) {
-        this.user = {
-          firstName: doc.data().user_fname.toString(),
-          lastName: doc.data().user_lname.toString(),
-          fullName: doc.data().user_fullname.toString(),
-          UID: doc.data().UID.toString(),
-          userHandle: doc.data().user_handle.toString(),
-          userEmail: doc.data().user_email.toString()
-        };
         console.log('Document data:', doc.data());
       } else {
         console.log('No such document!');
@@ -178,5 +160,17 @@ export class FirebaseService implements OnInit {
 
   getUsers() {
 
+  }
+
+  createMessage(userEmail, recipientEmail, dateTime, content) {
+    const db = firebase.firestore();
+    return this.db.collection('messages').add({
+      user_email: userEmail,
+      to_user: recipientEmail,
+      date_time: dateTime,
+      msg_content: content
+      });
+
+    console.log('write user data');
   }
 }
