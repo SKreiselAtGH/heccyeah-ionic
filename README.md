@@ -12,11 +12,11 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `ionic build` to build the project. The build artifacts will be stored in the `www` folder.
 
 ## Running Deployment
 
-Run 'ng build --prod' to create the prod build. Update the `dist\index.html` href tag to `<base href="/heccyeah-ui/">`. Run `firebase deploy`. Ensure it has deployed succesfully.
+Run 'ionic build' to create the prod build. This will update the `www` folder. Run `firebase deploy`. Ensure it has deployed succesfully.
 
 
 ## Further help
