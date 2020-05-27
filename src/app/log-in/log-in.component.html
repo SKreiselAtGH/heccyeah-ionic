@@ -1,96 +1,192 @@
-<ion-card class="ion-align-self-center log-card" *ngIf="!signUp">
-  <ion-card-header>
-    <ion-card-title>Log-In</ion-card-title>
-  </ion-card-header>
+<ion-grid class="login-grid">
+  <ion-row class="ion-hide-sm-down">
+    <ion-col size-lg="8" size-md="10" offset-lg="2" offset-md="1" >
+      <ion-card class="log-card" *ngIf="!signUp">
+        <ion-card-header>
+          <ion-card-title>Log-In</ion-card-title>
+        </ion-card-header>
 
-  <ion-card-content>
-    <div class="content-flex">
-      <div class="form-flex">
-        <ion-item class="field-flex">
-          <ion-label position="floating">Username:</ion-label>
-          <ion-input [(ngModel)]="username"></ion-input>
-        </ion-item>
-        <ion-item *ngIf="!pswChecked" class="field-flex">
-          <ion-label position="floating">Password:</ion-label>
-          <ion-input type="password" [(ngModel)]="password"></ion-input>
-        </ion-item>
-        <ion-item *ngIf="pswChecked" class="field-flex">
-          <ion-label position="floating">Password:</ion-label>
-          <ion-input [(ngModel)]="password"></ion-input>
-        </ion-item>
-        <div class="field-flex">
-          <ion-checkbox class="checkbox" [(ngModel)]="pswChecked" ></ion-checkbox>&nbsp;Show Password
+        <ion-card-content>
+          <div class="content-flex-column">
+            <div class="form-flex">
+              <ion-item class="field-flex">
+                <ion-label position="floating">Email:</ion-label>
+                <ion-input [(ngModel)]="username"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="!pswChecked" class="field-flex">
+                <ion-label position="floating">Password:</ion-label>
+                <ion-input type="password" [(ngModel)]="password"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="pswChecked" class="field-flex">
+                <ion-label position="floating">Password:</ion-label>
+                <ion-input [(ngModel)]="password"></ion-input>
+              </ion-item>
+              <div class="field-flex">
+                <ion-checkbox class="checkbox" [(ngModel)]="pswChecked" ></ion-checkbox>&nbsp;Show Password
+              </div>
+            </div>
+
+
+
+            <div class="button-flex">
+              <ion-button expand="block" class="quart-width" (click)="toggleSignUp()">No Account? Sign Up</ion-button>
+              <ion-button expand="block" class="quart-width" (click)="logIn()">Log-In</ion-button>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card class="log-card" *ngIf="signUp">
+        <ion-card-header>
+          <ion-card-title>Sign-Up</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="content-flex-column">
+            <div class="form-flex">
+              <ion-item class="field-flex">
+                <ion-label position="floating">First Name:</ion-label>
+                <ion-input [(ngModel)]="firstName"></ion-input>
+              </ion-item>
+              <ion-item class="field-flex">
+                <ion-label position="floating">Last Name:</ion-label>
+                <ion-input [(ngModel)]="lastName"></ion-input>
+              </ion-item>
+
+              <ion-item class="field-flex">
+                <ion-label position="floating">Email:</ion-label>
+                <ion-input [(ngModel)]="email"></ion-input>
+              </ion-item>
+              <ion-item class="field-flex">
+                <ion-label position="floating">Username:</ion-label>
+                <ion-input [(ngModel)]="username"></ion-input>
+              </ion-item>
+
+              <ion-item *ngIf="!pswChecked" class="field-flex">
+                <ion-label position="floating">Password:</ion-label>
+                <ion-input type="password" [(ngModel)]="newPassword"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="pswChecked" class="field-flex">
+                <ion-label position="floating">Password:</ion-label>
+                <ion-input [(ngModel)]="newPassword"></ion-input>
+              </ion-item>
+              <div class="field-flex">
+                <ion-checkbox class="checkbox" [(ngModel)]="pswChecked" ></ion-checkbox>&nbsp;Show Password
+              </div>
+              <ion-item *ngIf="!confChecked" class="field-flex">
+                <ion-label position="floating">Confirm Password:</ion-label>
+                <ion-input type="password" [(ngModel)]="confirmPassword"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="confChecked" class="field-flex">
+                <ion-label position="floating">Confirm Password:</ion-label>
+                <ion-input [(ngModel)]="confirmPassword"></ion-input>
+              </ion-item>
+              <div class="field-flex">
+                <ion-checkbox class="checkbox" [(ngModel)]="confChecked" ></ion-checkbox>&nbsp;Show Password
+              </div>
+            </div>
+
+
+
+            <div class="button-flex">
+              <ion-button expand="block" class="quart-width" (click)="toggleSignUp()">Cancel</ion-button>
+              <ion-button expand="block" class="quart-width" (click)="signUpCall()">Sign-Up</ion-button>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-hide-sm-up ion-align-items-center">
+    <ion-col size="12" >
+      <div class="log-card" *ngIf="!signUp">
+          <div class="content-flex-row w-100 ion-justify-content-center">
+            <h2 class="mobile-title">Log-In</h2>
+          </div>
+          <div class="content-flex-column ion-justify-content-between">
+            <div class="form-flex">
+              <ion-item class="field-flex">
+                <ion-label position="floating">Username:</ion-label>
+                <ion-input [(ngModel)]="username"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="!pswChecked" class="field-flex">
+                <ion-label position="floating">Password:</ion-label>
+                <ion-input type="password" [(ngModel)]="password"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="pswChecked" class="field-flex">
+                <ion-label position="floating">Password:</ion-label>
+                <ion-input [(ngModel)]="password"></ion-input>
+              </ion-item>
+              <div class="field-flex">
+                <ion-checkbox class="checkbox" [(ngModel)]="pswChecked" ></ion-checkbox>&nbsp;Show Password
+              </div>
+            </div>
+
+
+
+            <div class="button-flex">
+              <ion-button expand="block" class="quart-width" (click)="toggleSignUp()">No Account? Sign Up</ion-button>
+              <ion-button expand="block" class="quart-width" (click)="logIn()">Log-In</ion-button>
+            </div>
+          </div>
+      </div>
+
+      <div class="log-card" *ngIf="signUp">
+        <div class="content-flex-row w-100 ion-justify-content-center">
+          <h2 class="mobile-title">Sign-up</h2>
         </div>
+          <div class="content-flex-column ion-justify-content-between">
+            <div class="form-flex">
+              <ion-item class="field-flex">
+                <ion-label position="floating">First Name:</ion-label>
+                <ion-input [(ngModel)]="firstName"></ion-input>
+              </ion-item>
+              <ion-item class="field-flex">
+                <ion-label position="floating">Last Name:</ion-label>
+                <ion-input [(ngModel)]="lastName"></ion-input>
+              </ion-item>
+
+              <ion-item class="field-flex">
+                <ion-label position="floating">Email:</ion-label>
+                <ion-input [(ngModel)]="email"></ion-input>
+              </ion-item>
+              <ion-item class="field-flex">
+                <ion-label position="floating">Username:</ion-label>
+                <ion-input [(ngModel)]="username"></ion-input>
+              </ion-item>
+
+              <ion-item *ngIf="!pswChecked" class="field-flex">
+                <ion-label position="floating">Password:</ion-label>
+                <ion-input type="password" [(ngModel)]="newPassword"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="pswChecked" class="field-flex">
+                <ion-label position="floating">Password:</ion-label>
+                <ion-input [(ngModel)]="newPassword"></ion-input>
+              </ion-item>
+              <div class="field-flex">
+                <ion-checkbox class="checkbox" [(ngModel)]="pswChecked" ></ion-checkbox>&nbsp;Show Password
+              </div>
+              <ion-item *ngIf="!confChecked" class="field-flex">
+                <ion-label position="floating">Confirm Password:</ion-label>
+                <ion-input type="password" [(ngModel)]="confirmPassword"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="confChecked" class="field-flex">
+                <ion-label position="floating">Confirm Password:</ion-label>
+                <ion-input [(ngModel)]="confirmPassword"></ion-input>
+              </ion-item>
+              <div class="field-flex">
+                <ion-checkbox class="checkbox" [(ngModel)]="confChecked" ></ion-checkbox>&nbsp;Show Password
+              </div>
+            </div>
+
+
+
+            <div class="button-flex">
+              <ion-button expand="block" class="quart-width" (click)="toggleSignUp()">Cancel</ion-button>
+              <ion-button expand="block" class="quart-width" (click)="signUpCall()">Sign-Up</ion-button>
+            </div>
+          </div>
       </div>
-
-
-
-      <div class="button-flex">
-        <ion-button expand="block" class="quart-width" (click)="toggleSignUp()">No Account? Sign Up</ion-button>
-        <ion-button expand="block" class="quart-width" (click)="logIn()">Log-In</ion-button>
-      </div>
-    </div>
-  </ion-card-content>
-</ion-card>
-
-<ion-card class="ion-align-self-center log-card" *ngIf="signUp">
-  <ion-card-header>
-    <ion-card-title>Sign-Up</ion-card-title>
-  </ion-card-header>
-
-  <ion-card-content>
-    <div class="content-flex">
-      <div class="form-flex">
-        <ion-item class="field-flex">
-          <ion-label position="floating">First Name:</ion-label>
-          <ion-input [(ngModel)]="firstName"></ion-input>
-        </ion-item>
-        <ion-item class="field-flex">
-           <ion-label position="floating">Last Name:</ion-label>
-          <ion-input [(ngModel)]="lastName"></ion-input>
-        </ion-item>
-
-        <ion-item class="field-flex">
-          <ion-label position="floating">Email:</ion-label>
-          <ion-input [(ngModel)]="email"></ion-input>
-        </ion-item>
-        <ion-item class="field-flex">
-          <ion-label position="floating">Username:</ion-label>
-          <ion-input [(ngModel)]="username"></ion-input>
-        </ion-item>
-
-        <ion-item *ngIf="!pswChecked" class="field-flex">
-          <ion-label position="floating">Password:</ion-label>
-          <ion-input type="password" [(ngModel)]="newPassword"></ion-input>
-        </ion-item>
-        <ion-item *ngIf="pswChecked" class="field-flex">
-          <ion-label position="floating">Password:</ion-label>
-          <ion-input [(ngModel)]="newPassword"></ion-input>
-        </ion-item>
-        <div class="field-flex">
-          <ion-checkbox class="checkbox" [(ngModel)]="pswChecked" ></ion-checkbox>&nbsp;Show Password
-        </div>
-        <ion-item *ngIf="!confChecked" class="field-flex">
-          <ion-label position="floating">Confirm Password:</ion-label>
-          <ion-input type="password" [(ngModel)]="confirmPassword"></ion-input>
-        </ion-item>
-        <ion-item *ngIf="confChecked" class="field-flex">
-          <ion-label position="floating">Confirm Password:</ion-label>
-          <ion-input [(ngModel)]="confirmPassword"></ion-input>
-        </ion-item>
-        <div class="field-flex">
-          <ion-checkbox class="checkbox" [(ngModel)]="confChecked" ></ion-checkbox>&nbsp;Show Password
-        </div>
-      </div>
-
-
-
-      <div class="button-flex">
-        <ion-button expand="block" class="quart-width" (click)="toggleSignUp()">Cancel</ion-button>
-        <ion-button expand="block" class="quart-width" (click)="signUpCall()">Sign-Up</ion-button>
-      </div>
-    </div>
-  </ion-card-content>
-</ion-card>
-
-
+    </ion-col>
+  </ion-row>
+</ion-grid>

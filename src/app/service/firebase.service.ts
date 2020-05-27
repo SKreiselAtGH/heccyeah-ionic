@@ -24,6 +24,10 @@ export class FirebaseService implements OnInit {
   private newUser: any;
   private currentUser: firebase.User;
   signedIn: any;
+  userObject = { email: '',
+  password: '',
+  fullName: '',
+  handle: ''};
   constructor(public db: AngularFirestore,
               public http: HttpClient,
               private router: Router) { }
@@ -116,7 +120,7 @@ export class FirebaseService implements OnInit {
 
 
   emailLogin(email, password) {
-    let obs: Observable<any>;
+    let obs = new Observable<any>();
     const db = firebase.firestore();
     if (this.loggedIn === true) {
       console.log('You are already logged in');
@@ -131,6 +135,7 @@ export class FirebaseService implements OnInit {
       if (this.signedIn) {
         this.loggedIn = true;
         console.log('we gucci');
+        this.router.navigateByUrl('/profile');
       } else {
         this.loggedIn = false;
         console.log('we not gucci');
@@ -138,24 +143,26 @@ export class FirebaseService implements OnInit {
     }
     console.log(obs);
     return obs;
-  }
+    }
 
-  getUser() {
+    getUser() {
     const db = firebase.firestore();
-    // this.signedIn = firebase.auth().currentUser;
+    this.signedIn = firebase.auth().currentUser;
     const userRef = db.collection('app').doc('users').collection('user_info').doc(this.signedIn.email);
     console.log(userRef);
-    this.user = userRef.get().then(doc => {
+    userRef.get().then(doc => {
       if (doc.exists) {
+        this.user = doc.data();
+        debugger;
         console.log('Document data:', doc.data());
       } else {
         console.log('No such document!');
       }
+      console.log(this.user);
+      return this.user;
     }).catch(error => {
       console.log('Error getting document:', error);
     });
-    console.log(this.user);
-    return this.user;
   }
 
   getUsers() {

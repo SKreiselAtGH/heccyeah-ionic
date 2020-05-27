@@ -1,6 +1,5 @@
 .log-card {
-  min-height: auto;
-  width: 70%;
+  width: 100%;
 }
 .quart-width {
   width: auto;
@@ -8,10 +7,14 @@
 .checkbox {
   margin-top: 1%;
 }
-.content-flex {
+.content-flex-column {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.content-flex-row {
+  display: flex;
+  flex-direction: row;
 }
 .form-flex {
   display: flex;

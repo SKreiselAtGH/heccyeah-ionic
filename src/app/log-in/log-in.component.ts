@@ -36,11 +36,7 @@ export class LogInComponent implements OnInit {
   }
 
   logIn() {
-    this.firebaseService.emailLogin(this.email, this.password).subscribe(r => {
-      console.log(r);
-      this.router.navigateByUrl('/profile');
-
-    });
+    this.firebaseService.emailLogin(this.username, this.password);
   }
 
   signUpCall() {

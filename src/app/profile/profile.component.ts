@@ -12,7 +12,7 @@ export class ProfileComponent implements OnInit {
   constructor( private firebaseService: FirebaseService) { }
 
   ngOnInit() {
-    this.user = this.firebaseService.getUser();
+    this.firebaseService.getUser();
     console.log(this.user);
   }
 
